@@ -1,0 +1,10 @@
+.header {
+    padding: 20px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+    background-color: #6cf119;
+    -webkit-box-shadow: 4px 4px 4px 0px rgba(54, 50, 50, 0.63);
+    -moz-box-shadow: 4px 4px 4px 0px rgba(54, 50, 50, 0.63);
+    box-shadow: 4px 4px 4px 0px rgba(54, 50, 50, 0.63);
+}

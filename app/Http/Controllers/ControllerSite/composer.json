@@ -1,0 +1,13 @@
+{
+    "name": "david/qrcode",
+    "authors": [
+        {
+            "name": "David Vieira",
+            "email": "daviddemais45@gmail.com"
+        }
+    ],
+    "require": {
+        "endroid/qr-code": "^3.9",
+        "endroid/qrcode": "^3.9"
+    }
+}

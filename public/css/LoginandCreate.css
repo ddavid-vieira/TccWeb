@@ -1,0 +1,90 @@
+* {
+    font-family: 'Kanit', sans-serif;
+}
+
+.header {
+    padding: 20px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-end;
+    background-color: #6cf119;
+    -webkit-box-shadow: 4px 4px 4px 0px rgba(54, 50, 50, 0.63);
+    -moz-box-shadow: 4px 4px 4px 0px rgba(54, 50, 50, 0.63);
+    box-shadow: 4px 4px 4px 0px rgba(54, 50, 50, 0.63);
+}
+
+.container {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: space-around;
+}
+
+.image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form {
+    margin-right: 100px;
+    margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+
+.linha-vertical {
+    margin-top: 50px;
+    margin-bottom: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 600px;
+    /*Altura da linha*/
+    border-left: 1px solid #808080;
+    /* Adiciona borda esquerda na div como ser fosse uma linha.*/
+}
+
+.h1form {
+    padding-bottom: 15px;
+}
+
+.label {
+    font-size: 30px;
+}
+
+.labels, .input-create {
+    display: block;
+    padding: 2px;
+}
+
+.labels {
+    font-size: 20px;
+    opacity: 0.7;
+    text-align: left;
+}
+
+.input-create {
+    display: inline-block;
+    padding-left: 4px;
+    font-size: 15px;
+    height: 35px;
+    width: 250px;
+    border: 1px solid #808080;
+    border-radius: 5px;
+}
+
+.input {
+    font-size: 20px;
+    height: 40px;
+    width: 300px;
+    border: 1px solid #808080;
+    border-radius: 5px;
+}
+
+.input:last-child {
+    margin-bottom: 40px;
+}
