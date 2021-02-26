@@ -16,7 +16,7 @@ class Conferencia extends Migration
         Schema::create("conferencia", function (Blueprint $table) {
             $table->increments('Idconferencia');
             $table->integer('CodSala')->unsigned();
-            $table->foreign('Codsala')->references('CodSala')->on('sala')->onDelete('Cascade')->onUpdate('Cascade');
+            $table->foreign('CodSala')->references('CodSala')->on('sala')->onDelete('Cascade')->onUpdate('Cascade');
             $table->string('Sala');
             $table->integer('Matricula')->unsigned();
             $table->foreign('Matricula')->references('Matricula')->on('servidor')->onDelete('Cascade')->onUpdate('Cascade');

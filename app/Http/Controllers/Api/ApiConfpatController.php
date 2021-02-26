@@ -9,10 +9,6 @@ use App\Models\ModelSite\conferencia;
 use App\Models\ModelSite\sala;
 use App\Models\ModelSite\servidor;
 use App\Models\ModelSite\patrimonio;
-
-
-
-
 use Exception;
 
 class ApiConfpatController extends Controller
