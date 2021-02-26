@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\ModelAPi\ApiConfpatModel;
+use App\Models\ModelApi\ApiConfpatModel;
 use App\Models\ModelSite\conferencia;
 use App\Models\ModelSite\sala;
 use App\Models\ModelSite\servidor;
@@ -72,7 +72,7 @@ class ApiConfpatController extends Controller
     }
     public function UniqueConference($id)
     {
-        if ($dados = conferencia::where('Idconferencia',$id)->get()) {
+        if ($dados = conferencia::where('Idconferencia', $id)->get()) {
             $CodSala = $dados[0]["CodSala"];
             $patrimonios = patrimonio::where("CodSala", $CodSala)->get();
             return [
