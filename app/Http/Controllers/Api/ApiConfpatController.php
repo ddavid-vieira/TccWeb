@@ -18,11 +18,11 @@ class ApiConfpatController extends Controller
         $this->objsala = new sala();
         $this->objservidor = new servidor();
     }
-    public function list()
+    public function list()  
     {
         try {
-            $dados = ApiConfpatModel::all();
-            return ["status" => 200, "data" => $dados];
+            $dados = (array) ApiConfpatModel::all();
+            return ["status" => 200, "data" => $dados["\x00*\x00items"]];
         } catch (Exception $e) {
             return ["retorno" => $e->getMessage()];
         }
