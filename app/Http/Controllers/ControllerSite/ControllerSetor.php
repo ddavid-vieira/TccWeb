@@ -17,7 +17,7 @@ class ControllerSetor extends Controller
     public function create(Request $request, setor $setor)
     {
         if (setor::insert([
-            'Nome' => $request->nome
+            'nome' => $request->nome
 
 
         ])) {
