@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\ControllerSite;
 
-use App\Models\ModelSite\Setor;
+use App\Models\ModelSite\setor;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
