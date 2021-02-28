@@ -87,6 +87,7 @@ class ApiConfpatController extends Controller
     }
     public function CreateUserApi(Request $request)
     {
+
         servidor::insert(
             [
                 'Matricula' => $request->matricula,
@@ -96,5 +97,6 @@ class ApiConfpatController extends Controller
                 'Senha' => md5($request->senha)
             ]
         );
+        return 'true';
     }
 }

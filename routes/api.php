@@ -26,5 +26,5 @@ Route::namespace('App\Http\Controllers\Api')->group(function () {
     Route::get('/createConferences', 'ApiConfpatController@listdata');
     Route::get('/getConferences', 'ApiConfpatController@listConference')->name('Conferences');
     Route::get('/getUniqueConference/{id}', 'ApiConfpatController@UniqueConference');
-    Route::post('/CreateUserApi','ApiConfpatController@');
+    Route::any('/CreateUserApi','ApiConfpatController@CreateUserApi');
 });
