@@ -2,19 +2,17 @@
 
 namespace App\Http\Controllers\ControllerSite;
 
-require __DIR__ . "/vendor/autoload.php";
+//require __DIR__ . "/vendor/autoload.php";
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\ModelSite\patrimonio;
 use App\Models\ModelSite\sala;
-use Endroid\QrCode\QrCode;
-use Endroid\QrCode\ErrorCorrectionLevel;
-use Endroid\QrCode\LabelAlignment;
 
 
 class ControllerPatrimonio extends Controller
 {
+
     private $objpatrimonio;
     private $objsala;
     public function __construct()
@@ -53,18 +51,20 @@ class ControllerPatrimonio extends Controller
 
                             ]
                         );
-                        $qrCode = new QrCode($dados[2]);
-                        $qrCode->setSize(200);
-                        $qrCode->setMargin(10);
-                        $qrCode->setErrorCorrectionLevel(ErrorCorrectionLevel::HIGH());
-                        $qrCode->setLabel($dados[2], 16, LabelAlignment::CENTER());
-                        $qrCode->setForegroundColor(array('r' => 0, 'g' => 0, 'b' => 0, 'a' => 0));
-                        $qrCode->writeFile(__DIR__ . '\Qrcode\qrcode' . $dados[2] . '.png');
                     }
                 }
             }
         } else {
             return 'Envie um arquivo valido';
+        }
+    }
+    public function deletePatrimonios(patrimonio $patrimonio, $id)
+    {
+        $query = $patrimonio::where('CodSala', $id);
+        if ($query->delete()) {
+            return 'Deletado';
+        } else {
+            return 'não deletado';
         }
     }
 }

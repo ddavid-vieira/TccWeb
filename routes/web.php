@@ -31,4 +31,5 @@ Route::namespace('App\Http\Controllers\ControllerSite')->group(function () {
     Route::view('/ListSalasView', 'ListSalas')->name('ListSalas');
     Route::get('/listsalas', 'ControllerSala@list')->name('Salas');
     Route::post('/searchsalas', 'ControllerSala@search')->name('SearchSalas');
+    Route::any('/deletePatrimonios/{id}', 'ControllerPatrimonio@deletePatrimonios')->name('DeletePatrimonios');
 });
