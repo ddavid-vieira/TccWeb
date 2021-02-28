@@ -18,7 +18,7 @@ class ApiConfpatController extends Controller
         $this->objsala = new sala();
         $this->objservidor = new servidor();
     }
-    public function list()  
+    public function list()
     {
         try {
             $dados = (array) ApiConfpatModel::all();
@@ -84,5 +84,17 @@ class ApiConfpatController extends Controller
         } else {
             return ["status" => 404];
         }
+    }
+    public function CreateUserApi(Request $request)
+    {
+        servidor::insert(
+            [
+                'Matricula' => $request->matricula,
+                'Nome' => $request->nome,
+                'Telefone' => $request->telefone,
+                'Cpf' => $request->cpf,
+                'Senha' => md5($request->senha)
+            ]
+        );
     }
 }
