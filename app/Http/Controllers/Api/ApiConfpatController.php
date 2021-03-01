@@ -99,4 +99,17 @@ class ApiConfpatController extends Controller
         );
         return 'true';
     }
+    public function auth(Request $request, servidor $servidor)
+    {
+        $dados = $servidor::whereRaw('Matricula = ? and Senha = ? ', [$request->matricula, md5($request->senha)])->get();
+        if (sizeof($dados) != 0) {
+            return [
+                'authenticated' => true,
+                'data' => $dados,
+                'message' => 'ok'
+            ];
+        } else {
+            return ['message' => 'Login Failed'];
+        }
+    }
 }
