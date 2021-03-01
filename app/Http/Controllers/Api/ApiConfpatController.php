@@ -101,7 +101,7 @@ class ApiConfpatController extends Controller
     }
     public function auth(Request $request, servidor $servidor)
     {
-        $dados = $servidor::whereRaw('Matricula = ? and Senha = ? ', [$request->matricula, md5($request->senha)])->get();
+        $dados = $servidor::whereRaw(' "Matricula" = ? and "Senha" = ? ', [$request->matricula, md5($request->senha)])->get();
         if (sizeof($dados) != 0) {
             return [
                 'authenticated' => true,
