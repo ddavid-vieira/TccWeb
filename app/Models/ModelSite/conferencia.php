@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class conferencia extends Model
 {
     protected $table = 'conferencia';
-    protected $fillable = ['Idconferencia', 'CodSala','Sala','Matricula','Servidor','Data'];
+    protected $fillable = ['Idconferencia','CodSetor','NomeSetor', 'CodSala','Sala','Data'];
     protected $primaryKey ='Idconferencia';
     public $timestamps= false;
     use HasFactory;

@@ -57,7 +57,7 @@ class ApiConfpatController extends Controller
                     "Servidor" => $request->SelectServidor,
                     'Data' => $request->data
 
-                ]
+                ]   
             )) {
                 return redirect('api/getConferences');
             }

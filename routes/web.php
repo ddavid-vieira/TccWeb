@@ -34,3 +34,4 @@ Route::namespace('App\Http\Controllers\ControllerSite')->group(function () {
     Route::any('/deletePatrimonios/{id}', 'ControllerPatrimonio@deletePatrimonios')->name('DeletePatrimonios');
     Route::any('/deleteConferencias/{id}', 'ControllerConferencia@deleteConferencias')->name('DeleteConferencias');
 });
+    
