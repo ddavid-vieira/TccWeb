@@ -13,7 +13,7 @@ class Conferencias extends Migration
      */
     public function up()
     {   
-        Schema::dropIfExists("conferencia");
+       
         Schema::create("conferencia", function (Blueprint $table) {
             $table->increments('Idconferencia');
             $table->integer('CodSala')->unsigned();
@@ -34,6 +34,6 @@ class Conferencias extends Migration
      */
     public function down()
     {
-        
+        Schema::dropIfExists("conferencia");
     }
 }
