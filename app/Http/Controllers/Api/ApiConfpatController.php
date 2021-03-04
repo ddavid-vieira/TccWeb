@@ -44,17 +44,15 @@ class ApiConfpatController extends Controller
         $CodSala = $this->objsala::where("nome", $request->SelectSala)->get("CodSala");
         $CodSetor = $this->objsala::where("CodSala", $CodSala[0]["CodSala"])->get("CodSetor");
         $nomeSetor = $this->objsetor::where("CodSetor", $CodSetor[0]["CodSetor"])->get("nome");
-        $Matricula = $this->objservidor::where("Nome", $request->SelectServidor)->get("Matricula");
+        
 
-        if ($CodSala != null && $Matricula != null) {
+        if ($CodSala != null ) {
             if ($conferencia::insert(
                 [
                     'CodSala' => $CodSala[0]["CodSala"],
+                    'Sala' =>  $request->SelectSala,
                     'CodSetor' => $CodSetor[0]["CodSetor"],
                     'NomeSetor' => $nomeSetor[0]["nome"],
-                    'Sala' =>  $request->SelectSala,
-                    'Matricula' => $Matricula[0]["Matricula"],
-                    "Servidor" => $request->SelectServidor,
                     'Data' => $request->data
 
                 ]   
