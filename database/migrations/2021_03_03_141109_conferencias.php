@@ -14,16 +14,7 @@ class Conferencias extends Migration
     public function up()
     {   
         Schema::dropIfExists("conferencia");
-        Schema::create("conferencia", function (Blueprint $table) {
-            $table->increments('Idconferencia');
-            $table->integer('CodSala')->unsigned();
-            $table->foreign('CodSala')->references('CodSala')->on('sala')->onDelete('Cascade')->onUpdate('Cascade');
-            $table->string('Sala');
-            $table->integer('CodSetor')->unsigned();
-            $table->foreign('CodSetor')->references('CodSetor')->on('setor')->onDelete('Cascade')->onUpdate('Cascade');
-            $table->string('NomeSetor');
-            $table->string('Data');
-        });
+        
     }
 
     /**
