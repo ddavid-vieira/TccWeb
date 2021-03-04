@@ -12,7 +12,8 @@ class Conferencias extends Migration
      * @return void
      */
     public function up()
-    {
+    {   
+        Schema::dropIfExists("conferencia");
         Schema::create("conferencia", function (Blueprint $table) {
             $table->increments('Idconferencia');
             $table->integer('CodSala')->unsigned();
@@ -21,8 +22,6 @@ class Conferencias extends Migration
             $table-> string('NomeSetor');
             $table->foreign('CodSala')->references('CodSala')->on('sala')->onDelete('Cascade')->onUpdate('Cascade');
             $table->string('Sala');
-            $table->integer('Matricula')->unsigned();
-            $table->foreign('Matricula')->references('Matricula')->on('servidor')->onDelete('Cascade')->onUpdate('Cascade');
             $table->string('Servidor');
             $table->string('Data');
         });
@@ -35,6 +34,6 @@ class Conferencias extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('conferencia');
+        
     }
 }
