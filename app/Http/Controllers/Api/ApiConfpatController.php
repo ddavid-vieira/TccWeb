@@ -9,6 +9,8 @@ use App\Models\ModelSite\conferencia;
 use App\Models\ModelSite\sala;
 use App\Models\ModelSite\servidor;
 use App\Models\ModelSite\patrimonio;
+use App\Models\ModelSite\setor;
+
 use Exception;
 
 class ApiConfpatController extends Controller
@@ -16,6 +18,7 @@ class ApiConfpatController extends Controller
     public function __construct()
     {
         $this->objsala = new sala();
+        $this->objsetor = new setor();
         $this->objservidor = new servidor();
     }
     public function list()
@@ -38,12 +41,17 @@ class ApiConfpatController extends Controller
     }
     public function store(Request $request, conferencia $conferencia)
     {
-        if ($CodSala = $this->objsala::where("nome", $request->SelectSala)->get("CodSala") &&
-            $Matricula = $this->objservidor::where("Nome", $request->SelectServidor)->get("Matricula",)
-        ) {
+        $CodSala = $this->objsala::where("nome", $request->SelectSala)->get("CodSala");
+        $CodSetor = $this->objsala::where("CodSala", $CodSala[0]["CodSala"])->get("CodSetor");
+        $nomeSetor = $this->objsetor::where("CodSetor", $CodSetor[0]["CodSetor"])->get("nome");
+        $Matricula = $this->objservidor::where("Nome", $request->SelectServidor)->get("Matricula");
+
+        if ($CodSala != null && $Matricula != null) {
             if ($conferencia::insert(
                 [
-                    'CodSala' => $CodSala,
+                    'CodSala' => $CodSala[0]["CodSala"],
+                    'CodSetor' => $CodSetor[0]["CodSetor"],
+                    'NomeSetor' => $nomeSetor[0]["nome"],
                     'Sala' =>  $request->SelectSala,
                     'Matricula' => $Matricula[0]["Matricula"],
                     "Servidor" => $request->SelectServidor,
@@ -65,6 +73,7 @@ class ApiConfpatController extends Controller
     {
         try {
             $dados = conferencia::all();
+
             return ["status" => 200, "data" => $dados];
         } catch (Exception $e) {
             return ["retorno" => $e->getMessage()];
@@ -110,6 +119,25 @@ class ApiConfpatController extends Controller
             ];
         } else {
             return ['message' => 'Login Failed'];
+        }
+    }
+    public function listConferencebySetor($id)
+    {
+        try {
+
+            $dados = conferencia::where("CodSetor", $id)->get();
+
+            return ["status" => 200, "data" => $dados];
+        } catch (Exception $e) {
+            return ["retorno" => $e->getMessage()];
+        }
+    }
+    public function allSetores()
+    {
+        $dados = $this->objsetor::all();
+
+        if ($dados != null) {
+            return ["data" => $dados];
         }
     }
 }

@@ -28,4 +28,6 @@ Route::namespace('App\Http\Controllers\Api')->group(function () {
     Route::get('/getUniqueConference/{id}', 'ApiConfpatController@UniqueConference');
     Route::any('/CreateUserApi','ApiConfpatController@CreateUserApi');
     Route::any('/AuthUserApi', 'ApiConfpatController@auth');
+    Route::get('/getConferences/{id}','ApiConfpatController@listConferencebySetor');
+    Route::get('/allsetores','ApiConfpatController@allSetores');
 });

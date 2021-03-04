@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Conferencia extends Migration
+class Conferencias extends Migration
 {
     /**
      * Run the migrations.
@@ -16,6 +16,9 @@ class Conferencia extends Migration
         Schema::create("conferencia", function (Blueprint $table) {
             $table->increments('Idconferencia');
             $table->integer('CodSala')->unsigned();
+            $table ->integer('CodSetor')->unsigned();
+            $table->foreign('CodSetor')->references('CodSetor')->on('setor')->onDelete('Cascade')->onUpdate('Cascade');
+            $table-> string('NomeSetor');
             $table->foreign('CodSala')->references('CodSala')->on('sala')->onDelete('Cascade')->onUpdate('Cascade');
             $table->string('Sala');
             $table->integer('Matricula')->unsigned();
