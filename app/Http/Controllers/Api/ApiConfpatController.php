@@ -66,8 +66,8 @@ class ApiConfpatController extends Controller
     public function listdata()
     {
         $AllSalas = $this->objsala->all();
-        $AllServidores = $this->objservidor->all();
-        return View('CreateConference', compact('AllSalas', 'AllServidores'), compact('AllServidores'));
+      
+        return View('CreateConference', compact('AllSalas'));
     }
     public function listConference()
     {

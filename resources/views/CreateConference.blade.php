@@ -20,12 +20,7 @@
             <option name="sala" value="{{$sala->nome}}">{{$sala->nome}}</option>
             @endforeach
         </select>
-        <select name="SelectServidor" id="SelectServidor">
-            <option value="">Selecione o Servidor</option>
-            @foreach($AllServidores as $servidor)
-            <option name="servidor" value="{{$servidor->Nome}}">{{$servidor->Nome}}</option>
-            @endforeach
-        </select>
+      
         <input type="date" name="data" id="data" placeholder="Selecione o data da conferência">
         <input type="submit" value="Cadastrar">
 

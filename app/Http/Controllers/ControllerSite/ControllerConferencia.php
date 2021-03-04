@@ -22,4 +22,13 @@ class ControllerConferencia extends Controller
 
         $this->objservidor = new  servidor();
     }
+    public function deleteConferencias($id)
+    {
+        $query = $this->objconferencia::find($id);
+        if ($query->delete()) {
+            return 'Deletado';
+        } else {
+            return 'não deletado';
+        }
+    }
 }
