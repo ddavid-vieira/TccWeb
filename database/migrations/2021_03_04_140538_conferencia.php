@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Conferencias extends Migration
+class Conferencia extends Migration
 {
     /**
      * Run the migrations.
@@ -12,9 +12,8 @@ class Conferencias extends Migration
      * @return void
      */
     public function up()
-    {   
-        Schema::dropIfExists("conferencia");
-        
+    {
+        Schema::dropIfExists('conferencia');
     }
 
     /**
@@ -24,6 +23,6 @@ class Conferencias extends Migration
      */
     public function down()
     {
-        
+        //
     }
 }
