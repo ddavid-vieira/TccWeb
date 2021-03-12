@@ -41,6 +41,7 @@ Route::namespace('App\Http\Controllers\ControllerSite')->group(function () {
     Route::view('Import','Import')->name('Import');
     Route::any('/deleteSetor/{id}', 'ControllerSetor@deleteSetor');
     Route::any('/deleteServidor/{id}', 'ControllerServidor@deleteServidor');
+    
 
 });
     

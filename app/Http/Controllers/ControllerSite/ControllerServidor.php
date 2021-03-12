@@ -50,7 +50,7 @@ class ControllerServidor extends Controller
         session_destroy();
         return view('LoginUser');
     }
-    public function deleteSetor(servidor $servidor, $id)
+    public function deleteServidor(servidor $servidor, $id)
     {
         $query = $servidor::where('Matricula', $id);
         if ($query->delete()) {
