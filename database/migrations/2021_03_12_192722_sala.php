@@ -13,7 +13,7 @@ class Sala extends Migration
      */
     public function up()
     {
-        //Schema::dropIfExists('sala');
+        Schema::dropIfExists('sala');
         Schema::create("sala", function (Blueprint $table) {
             $table->increments('CodSala');
             $table->integer("CodSetor")->unsigned();
