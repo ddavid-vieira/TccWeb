@@ -38,7 +38,6 @@ class ControllerConferencia extends Controller
     {
         $conferencias = $this->objconferencia->all();
         $datas = $this->objconferencia->get("Data");
-        $dates = explode("-", $datas[0]["Data"]);
         return view('ListConferences', compact('conferencias'));
     }
     public function getUniqueConferencia($sala)
