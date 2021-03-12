@@ -12,7 +12,7 @@ class Servidor extends Migration
      * @return void
      */
     public function up()
-    {   Schema::dropIfExists("servidor");
+    {   //Schema::dropIfExists("servidor");
         Schema::create("servidor", function (Blueprint $table) {
             $table->increments('Matricula');
             $table->string('Nome');

@@ -48,4 +48,12 @@ class ControllerSala extends Controller
         $salas = $this->objsala->all();
         return view('ListSalas', compact('AllSetores','salas'));
     }
+    public function deleteSala($id, sala $sala){
+        $query = $sala::where('CodSala', $id);
+        if ($query->delete()) {
+            return 'Deletado';
+        } else {
+            return 'não deletado';
+        }
+    }
 }
