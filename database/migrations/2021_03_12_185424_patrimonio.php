@@ -13,7 +13,7 @@ class Patrimonio extends Migration
      */
     public function up()
     { 
-            Schema::dropIfExists("patrimonio");
+          //  Schema::dropIfExists("patrimonio");
             Schema::create("patrimonio", function (Blueprint $table) {
                 $table->increments('CodPatrimonio');
                 $table->integer('CodSala')->unsigned();

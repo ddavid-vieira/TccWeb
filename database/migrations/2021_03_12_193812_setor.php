@@ -13,11 +13,13 @@ class Setor extends Migration
      */
     public function up()
     {
+       // Schema::dropIfExists('setor');
         Schema::create("setor", function (Blueprint $table) {
             $table->increments('CodSetor');
             $table->string('nome');
         });
     }
+
     /**
      * Reverse the migrations.
      *
@@ -25,6 +27,6 @@ class Setor extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('setor');
+        //
     }
 }
