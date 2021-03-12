@@ -17,7 +17,7 @@ class Sala extends Migration
         Schema::create("sala", function (Blueprint $table) {
             $table->increments('CodSala');
             $table->integer("CodSetor")->unsigned();
-            $table->foreign("CodSetor")->references("CodSetor")->on("setor")->onDelete('Cascade')->onUpdate('Cascade');
+            $table->foreign("CodSetor")->references("CodSetor")->on("setor")->onDelete('cascade')->onUpdate('cascade');
             $table->string('nome');
         });
     }

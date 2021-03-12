@@ -17,7 +17,7 @@ class Patrimonio extends Migration
             Schema::create("patrimonio", function (Blueprint $table) {
                 $table->increments('CodPatrimonio');
                 $table->integer('CodSala')->unsigned();
-                $table->foreign('CodSala')->references('CodSala')->on('sala')->onDelete('Cascade')->onUpdate('Cascade');
+                $table->foreign('CodSala')->references('CodSala')->on('sala')->onDelete('cascade')->onUpdate('cascade');
                 $table->string('Unidade Gestora');
                 $table->string('Unidade');
                 $table->string('DataTombamento');

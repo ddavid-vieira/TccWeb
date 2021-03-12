@@ -17,10 +17,10 @@ class Conferencia extends Migration
         Schema::create('conferencia', function (Blueprint $table) {
             $table->increments('Idconferencia');
             $table->integer('CodSala')->unsigned();
-            $table->foreign('CodSala')->references('CodSala')->on('sala')->onDelete('Cascade')->onUpdate('Cascade');
+            $table->foreign('CodSala')->references('CodSala')->on('sala')->onDelete('cascade')->onUpdate('cascade');
             $table->string('Sala');
             $table->integer('CodSetor')->unsigned();
-            $table->foreign('CodSetor')->references('CodSetor')->on('setor')->onDelete('Cascade')->onUpdate('Cascade');
+            $table->foreign('CodSetor')->references('CodSetor')->on('setor')->onDelete('cascade')->onUpdate('cascade');
             $table->string('NomeSetor');
             $table->datetime('Data');
         });
