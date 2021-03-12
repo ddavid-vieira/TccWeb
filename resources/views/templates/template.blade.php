@@ -14,7 +14,7 @@
 
 <body>
     <div class="header">
-        <img src="{{url('images/image-removebg-preview.png')}}" alt="Confpat" widht="60" height="60">
+    <a class="navbar-brand" style="color:antiquewhite;" href="#">Confpat</a>
 
     </div>
     <div class="container">

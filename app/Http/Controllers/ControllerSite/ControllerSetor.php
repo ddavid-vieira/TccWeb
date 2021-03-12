@@ -25,7 +25,16 @@ class ControllerSetor extends Controller
         }
     }
     public function all(){
-        $AllSetores =$this->objsetor->all();
+        $AllSetores = $this->objsetor->all();
         return view('CreateSetor',compact('AllSetores'));
+    }
+    public function deleteSetor(setor $setor, $id)
+    {
+        $query = $setor::where('CodSetor', $id);
+        if ($query->delete()) {
+            return 'Deletado';
+        } else {
+            return 'não deletado';
+        }
     }
 }

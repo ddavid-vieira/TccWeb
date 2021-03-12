@@ -42,28 +42,28 @@ class ApiConfpatController extends Controller
     public function store(Request $request, conferencia $conferencia)
     {
         $CodSala = $this->objsala::where("nome", $request->SelectSala)->get("CodSala");
-        $CodSetor = $this->objsala::where("CodSala", $CodSala[0]["CodSala"])->get("CodSetor");
-        $nomeSetor = $this->objsetor::where("CodSetor", $CodSetor[0]["CodSetor"])->get("nome");
-        if ($CodSala != null ) {
+        $CodSetor = $this->objsetor::where("nome", $request->SelectSetor)->get("CodSetor");
+        if ($CodSala != null && $CodSetor != null) {
             if ($conferencia::insert(
                 [
                     'CodSala' => $CodSala[0]["CodSala"],
                     'Sala' =>  $request->SelectSala,
                     'CodSetor' => $CodSetor[0]["CodSetor"],
-                    'NomeSetor' => $nomeSetor[0]["nome"],
+                    'NomeSetor' => $request->SelectSetor,
                     'Data' => $request->data
 
-                ]   
+                ]
             )) {
-                return redirect('api/getConferences');
+                //return redirect('api/getConferences');
             }
         }
     }
-    public function listdata()
+    public function listdata(Request $request)
     {
         $AllSalas = $this->objsala->all();
-      
-        return View('CreateConference', compact('AllSalas'));
+        $AllSetores = $this->objsetor->all();
+
+        return view('CreateConference', compact('AllSalas', 'AllSetores'))->with('UserData', session('UseData'));
     }
     public function listConference()
     {
@@ -135,5 +135,9 @@ class ApiConfpatController extends Controller
         if ($dados != null) {
             return ["data" => $dados];
         }
+    }
+    public function getSalas()
+    {
+        return 'a';
     }
 }

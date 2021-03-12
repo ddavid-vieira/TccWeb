@@ -68,13 +68,13 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => App\Models\User::class,
+            'model' => App\Models\ModelSite\servidor::class,
         ],
 
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+         'users' => [
+             'driver' => 'database',
+             'table' => 'servidor',
+         ],
     ],
 
     /*
@@ -93,9 +93,9 @@ return [
     */
 
     'passwords' => [
-        'users' => [
-            'provider' => 'users',
-            'table' => 'password_resets',
+        'servidor' => [
+            'provider' => 'servidor',
+            'table' => 'servidor',
             'expire' => 60,
             'throttle' => 60,
         ],
