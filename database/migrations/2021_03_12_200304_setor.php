@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class Servidor extends Migration
+class Setor extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,10 @@ class Servidor extends Migration
      */
     public function up()
     {
-        Schema::create("servidor", function (Blueprint $table) {
-            $table->increments('Matricula');
-            $table->string('Nome');
-            $table->string('Telefone');
-            $table->string('Cpf');
-            $table->string('Senha');
+       // Schema::dropIfExists("setor");
+        Schema::create("setor", function (Blueprint $table) {
+            $table->increments('CodSetor');
+            $table->string('nome');
         });
     }
 
@@ -29,6 +27,6 @@ class Servidor extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('servidor');
+        //
     }
 }
