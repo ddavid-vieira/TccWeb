@@ -198,7 +198,7 @@ class ControllerPatrimonio extends Controller
                             }
                         }
                     }
-                    return  'deu bom tropa';
+                    return redirect()->route('Import');
                 }
                 if ($request->Selects == 3) {
                     function unlinkRecursive($dir, $deleteRootToo)

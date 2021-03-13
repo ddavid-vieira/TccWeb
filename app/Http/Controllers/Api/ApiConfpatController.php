@@ -54,7 +54,7 @@ class ApiConfpatController extends Controller
 
                 ]
             )) {
-                //return redirect('api/getConferences');
+                return redirect()->view('CreateConference');
             }
         }
     }
