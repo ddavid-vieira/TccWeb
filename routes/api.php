@@ -33,4 +33,5 @@ Route::namespace('App\Http\Controllers\Api')->group(function () {
     Route::get('/getConferences/{id}', 'ApiConfpatController@listConferencebySetor');
     Route::get('/allsetores', 'ApiConfpatController@allSetores');
     Route::get('/getSalas','ApiConfpatController@getSalas')->name('GetSalas');
+    Route::put('/alterEstado/{CodPatrimonio}','ApiConfpatController@updatePatrimonio');
 });

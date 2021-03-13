@@ -136,8 +136,25 @@ class ApiConfpatController extends Controller
             return ["data" => $dados];
         }
     }
-    public function getSalas()
+    public function updatePatrimonio(Request $request, patrimonio $patrimonio, $CodPatrimonio)
     {
-        return 'a';
+        try {
+            $data = $patrimonio::find($CodPatrimonio);
+
+            if ($request->Estado != $data->Estado) {
+                $data->Alterou = true;
+                $data->Estado = $request->Estado;
+            } else {
+                $data->Alterou = false;
+                $data->Verificado = true;
+            }
+            $data->save();
+            return [
+                "message" => "ok",
+                "Patrimonio" => $data
+            ];
+        } catch (Exception $e) {
+            return ['error' => $e->getMessage()];
+        }
     }
 }
