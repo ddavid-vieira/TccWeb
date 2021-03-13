@@ -80,10 +80,11 @@ class ApiConfpatController extends Controller
         if ($dados = conferencia::where('Idconferencia', $id)->get()) {
             $CodSala = $dados[0]["CodSala"];
             $patrimonios = patrimonio::where("CodSala", $CodSala)->get();
+            $countPatrimonios = patrimonio::where('Verificado', false)->get();
             return [
                 "status" => 200,
                 "data" => $dados,
-                "Quantidade" => count($patrimonios),
+                "Quantidade" => count($countPatrimonios),
                 "Patrimonios" => $patrimonios
             ];
         } else {
@@ -144,6 +145,7 @@ class ApiConfpatController extends Controller
             if ($request->Estado != $data->Estado) {
                 $data->Alterou = true;
                 $data->Estado = $request->Estado;
+                $data->Verificado = true;
             } else {
                 $data->Alterou = false;
                 $data->Verificado = true;
