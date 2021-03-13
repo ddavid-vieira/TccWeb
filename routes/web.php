@@ -19,7 +19,7 @@ Route::namespace('App\Http\Controllers\ControllerSite')->group(function () {
     Route::get('/patrimonio', 'ControllerPatrimonio@index');
     Route::any('/import', 'ControllerPatrimonio@route')->name('Import');
     Route::any('/storePatrimonio', 'ControllerPatrimonio@store')->name('store');
-    Route::post('/createUniqueQrcode','ControllerPatrimonio@createUniqueQrcode')->name('CreateUniqueQrCode');
+    Route::post('/createUniqueQrcode', 'ControllerPatrimonio@createUniqueQrcode')->name('CreateUniqueQrCode');
     Route::view('/CreateUser', 'CreateUser')->name('CreateUser');
     Route::post('/storeUser', 'ControllerServidor@store')->name('Create');
     Route::view('/', 'LoginUser')->name('LoginUser');
@@ -35,14 +35,12 @@ Route::namespace('App\Http\Controllers\ControllerSite')->group(function () {
     Route::any('/deletePatrimonios/{id}', 'ControllerPatrimonio@deletePatrimonios')->name('DeletePatrimonios');
     Route::any('/deleteConferencias/{id}', 'ControllerConferencia@deleteConferencias')->name('DeleteConferencias');
     Route::view('importUniqueQrCode', 'ImportUniqueQrCode')->name('ImportUniqueQrCode');
-    Route::get('listconferencesweb','ControllerConferencia@listconferences')->name('ListConferences');
+    Route::get('listconferencesweb', 'ControllerConferencia@listconferences')->name('ListConferences');
     Route::get('/getUniqueConference/{sala}', 'ControllerConferencia@getUniqueConferencia')->name('GetUniqueConference');
-    Route::view('GetUniqueConferencia','GetUniqueConferencia')->name('GetUniqueConferencia');
-    Route::view('Import','Import')->name('Import');
+    Route::view('GetUniqueConferencia', 'GetUniqueConferencia')->name('GetUniqueConferencia');
+    Route::view('Import', 'Import')->name('Import');
+    Route::view('CreateConference', 'CreateConference')->name('CreateConference');
     Route::any('/deleteSetor/{id}', 'ControllerSetor@deleteSetor');
     Route::any('/deleteServidor/{id}', 'ControllerServidor@deleteServidor');
     Route::any('/deleteSala/{id}', 'ControllerSala@deleteSala');
-
-
 });
-    
