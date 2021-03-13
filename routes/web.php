@@ -39,7 +39,6 @@ Route::namespace('App\Http\Controllers\ControllerSite')->group(function () {
     Route::get('/getUniqueConference/{sala}', 'ControllerConferencia@getUniqueConferencia')->name('GetUniqueConference');
     Route::view('GetUniqueConferencia', 'GetUniqueConferencia')->name('GetUniqueConferencia');
     Route::view('Import', 'Import')->name('Import');
-    Route::view('CreateConference', 'CreateConference')->name('CreateConference');
     Route::any('/deleteSetor/{id}', 'ControllerSetor@deleteSetor');
     Route::any('/deleteServidor/{id}', 'ControllerServidor@deleteServidor');
     Route::any('/deleteSala/{id}', 'ControllerSala@deleteSala');

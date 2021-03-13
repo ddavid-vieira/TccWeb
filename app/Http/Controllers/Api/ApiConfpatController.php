@@ -63,7 +63,7 @@ class ApiConfpatController extends Controller
         $AllSalas = $this->objsala->all();
         $AllSetores = $this->objsetor->all();
 
-        return view('CreateConference', compact('AllSalas', 'AllSetores'))->with('UserData', session('UseData'));
+        return view('CreateConference', compact('AllSalas', 'AllSetores'));
     }
     public function listConference()
     {
