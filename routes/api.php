@@ -25,7 +25,6 @@ Route::namespace('App\Http\Controllers\Api')->group(function () {
     Route::group(['middleware' => ['web']], function () {
         Route::any('/createConferences', 'ApiConfpatController@listdata')->name('CreateConference');
     });
-
     Route::get('/getConferences', 'ApiConfpatController@listConference')->name('Conferences');
     Route::get('/getUniqueConference/{id}', 'ApiConfpatController@UniqueConference');
     Route::any('/CreateUserApi', 'ApiConfpatController@CreateUserApi');

@@ -31,7 +31,7 @@ class ControllerServidor extends Controller
     }
     public function auth(Request $request, servidor $servidor)
     {
-        if ($dados = $servidor::whereRaw(' "Matricula" = ? and "Senha" = ? ', [$request->matricula, md5($request->senha)])->get()) {
+        if ($dados = $servidor::whereRaw(' Matricula = ? and Senha = ? ', [$request->matricula, md5($request->senha)])->get()) {
             session_start();
             $_SESSION['Nome'] = $dados[0]['Nome'];
             $_SESSION['Matricula'] = $dados[0]['Matricula'];
