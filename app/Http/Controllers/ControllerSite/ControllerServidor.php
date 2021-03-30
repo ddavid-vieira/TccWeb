@@ -2,10 +2,15 @@
 
 namespace App\Http\Controllers\ControllerSite;
 
+use Validator;
+use resources\views\vendor\flash;
+use App\Http\Requests\UserRequest;
+use App\Http\Requests\CreateUserRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\ModelSite\servidor;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Session;
 
 class ControllerServidor extends Controller
@@ -15,23 +20,45 @@ class ControllerServidor extends Controller
     {
         $this->objservidor = new servidor();
     }
-    public function store(Request $request, servidor $servidor)
+    public function store(CreateUserRequest $request, servidor $servidor)
     {
-        if (servidor::insert(
+        function desformatcpf($cpf)
+        {
+            $cpf1 = str_replace('.', '', $cpf);
+            $cpf2 = str_replace('-', '', $cpf1);
+            return $cpf2;
+        }
+        function desformatTelefone($telefone)
+        {
+            $telefone1 = str_replace(' ', '', $telefone);
+            $telefone2 = str_replace('-', '', $telefone1);
+            return  $telefone2;
+        }
+
+        $matricula = $request->old('matricula');
+        $nome = $request->old('nome');
+        $telefone = $request->old('telefone');
+        $cpf = $request->old('cpf');
+        if ($servidor::insert(
             [
                 'Matricula' => $request->matricula,
                 'Nome' => $request->nome,
-                'Telefone' => $request->telefone,
-                'Cpf' => $request->cpf,
-                'Senha' => md5($request->senha)
+                'Telefone' => desformatTelefone($request->telefone),
+                'Cpf' => desformatcpf($request->cpf),
+                'Senha' => Hash::make($request->senha)
             ]
         )) {
             return redirect()->route('LoginUser');
         }
     }
-    public function auth(Request $request, servidor $servidor)
+    public function auth(UserRequest $request, servidor $servidor)
     {
-        if ($dados = $servidor::whereRaw(' Matricula = ? and Senha = ? ', [$request->matricula, md5($request->senha)])->get()) {
+
+        $dados = $servidor::whereRaw('Matricula = ?', $request->matricula)->get();
+        if (count($dados) == 0) {
+            return redirect()->route('LoginUser')->with('message', 'Matrícula e/ou Senha Inválidas');
+        }
+        if (Hash::check($request->senha, $dados[0]["Senha"])) {
             session_start();
             $_SESSION['Nome'] = $dados[0]['Nome'];
             $_SESSION['Matricula'] = $dados[0]['Matricula'];
@@ -39,7 +66,7 @@ class ControllerServidor extends Controller
             $_SESSION['Cpf'] = $dados[0]['Cpf'];
             return redirect()->route('Import');
         } else {
-            return 'Usuário não encontrado';
+            return redirect()->route('LoginUser')->with('message', 'Matrícula e/ou Senha Inválidas');
         }
     }
     public function logout()

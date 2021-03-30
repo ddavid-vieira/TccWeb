@@ -13,13 +13,13 @@ class Servidor extends Migration
      */
     public function up()
     {   //Schema::dropIfExists("servidor");
-        Schema::create("servidor", function (Blueprint $table) {
-            $table->increments('Matricula');
-            $table->string('Nome');
-            $table->string('Telefone');
-            $table->string('Cpf');
-            $table->string('Senha');
-        });
+        // Schema::create("servidor", function (Blueprint $table) {
+        //     $table->increments('Matricula');
+        //     $table->string('Nome');
+        //     $table->string('Telefone');
+        //     $table->string('Cpf');
+        //     $table->string('Senha');
+        // });
     }
 
     /**

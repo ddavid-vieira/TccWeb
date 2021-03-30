@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{url('css/ViewIndex.css')}}">
-
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -39,13 +39,14 @@
                             <a href="#"> Matrícula: <?php
                                                     echo $_SESSION['Matricula'] ?></a>
                             <a href="#">Telefone: <?php
-                                                    function telephone($number)
+                                                    function masc_tel($tel)
                                                     {
-                                                        $number = "(" . substr($number, 0, 2) . ") " . substr($number, 2, -4) . " - " . substr($number, -4);
-                                                        // primeiro substr pega apenas o DDD e coloca dentro do (), segundo subtr pega os números do 3º até faltar 4, insere o hifem, e o ultimo pega apenas o 4 ultimos digitos
-                                                        return $number;
+                                                        $tam = strlen(preg_replace("/[^0-9]/", "", $tel));
+                                                        if ($tam <= 9) { 
+                                                            return substr($tel, 0, $tam - 4) . "-" . substr($tel, -4);
+                                                        }
                                                     }
-                                                    echo telephone($_SESSION['Telefone']) ?></a>
+                                                    echo masc_tel($_SESSION['Telefone']) ?></a>
                             <a href="#">CPF: <?php
                                                 echo formatar_cpf_cnpj($_SESSION['Cpf']);
                                                 function formatar_cpf_cnpj($doc)
@@ -75,18 +76,15 @@
                                                         return 'Documento invalido';
                                                     }
                                                 }
-
-
                                                 ?></a>
                         </div>
                     </div>
-                   
                 </div>
                 <a class="nav-item nav-link mt-2" style="color: #ff2401;" href="{{route('Logout')}}"> <span class="material-icons">
                         logout
                     </span></a>
 
-                
+
             </div>
         </div>
     </nav>

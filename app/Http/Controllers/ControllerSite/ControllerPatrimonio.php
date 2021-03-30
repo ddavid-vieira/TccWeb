@@ -3,8 +3,9 @@
 namespace App\Http\Controllers\ControllerSite;
 
 //require __DIR__ . "/vendor/autoload.php";
-
+use App\Http\Requests\UniqueQrCodeRequest;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ImportRequest;
 use Illuminate\Http\Request;
 use App\Models\ModelSite\patrimonio;
 use App\Models\ModelSite\sala;
@@ -34,12 +35,12 @@ class ControllerPatrimonio extends Controller
     {
         dd($this->objsala->find(3)->relPatrimonio);
     }
-    public function store(Request $request, patrimonio $patrimonio)
+    public function store(ImportRequest $request, patrimonio $patrimonio)
     {
         if ($request->hasFile('arquivo')) {
             $extension = $request->file('arquivo')->getClientOriginalExtension();
             if ($extension != 'csv') {
-                return 'Apenas csv';
+                return redirect()->route('Import')->with('message', 'Apenas arquivos com extensão ".csv" ');
             } else {
                 if ($request->Selects == 1) {
                     $insertSetor = false;
@@ -92,6 +93,7 @@ class ControllerPatrimonio extends Controller
                                         'Valor' => "$dados[19]",
                                         'Alterou' => 0,
                                         'Verificado' => 0,
+                                        'NovoEstado' =>''
 
 
                                     ]
@@ -191,6 +193,7 @@ class ControllerPatrimonio extends Controller
                                         'Valor' => "$dados[19]",
                                         'Alterou' => 0,
                                         'Verificado' => 0,
+                                        'NovoEstado' =>''
 
 
                                     ]
@@ -286,7 +289,7 @@ class ControllerPatrimonio extends Controller
     {
         return view('Import');
     }
-    public function createUniqueQrcode(Request $request)
+    public function createUniqueQrcode(UniqueQrCodeRequest $request)
     {
         function unlinkRecursive($dir, $deleteRootToo)
         {

@@ -11,7 +11,15 @@ Criação de Conferência
 
 @section('content')
 <h1>Cadastro de Conferência</h1>
-
+@if ($errors->any())
+<div class="alert alert-danger">
+    <ul>
+        @foreach ($errors->all() as $error)
+        <li>{{ $error }}</li>
+        @endforeach
+    </ul>
+</div>
+@endif
 <form action="{{route('ConferenceStore')}}" method="post">
     @csrf
     <div class="rowuser">
@@ -21,7 +29,6 @@ Criação de Conferência
             <option name="setor" value="{{$setor->nome}}">{{$setor->nome}}</option>
             @endforeach
         </select>
-
     </div>
     <select class="custom-select mt-3" name="SelectSala" id="SelectSala">
         <option value="">Selecione a Sala</option>

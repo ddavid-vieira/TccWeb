@@ -10,8 +10,15 @@ section {
     margin-top: 20px;
 }
 
+main {
+    display: grid;
+    height: 100%;
+    grid-template-columns: 103px 1fr;
+}
+
+
 .dropbtn {
-    background-color:transparent;
+    background-color: transparent;
     color: white;
     padding: 16px;
     font-size: 16px;
@@ -23,8 +30,9 @@ section {
 
 .dropbtn:hover, .dropbtn:focus {
     transition: all .3s ease-out;
-    box-shadow:  0 -1px 0 0 white inset, 0 -2px 0
+    box-shadow: 0 -1px 0 0 white inset, 0 -2px 0
 }
+
 /* The container <div> - needed to position the dropdown content */
 
 .dropdown {
@@ -56,12 +64,35 @@ section {
 
 /* Change color of dropdown links on hover */
 
+#paste:hover {
+    cursor: pointer;
+    color: blue;
+}
+
+#clear:hover {
+    cursor: pointer;
+    color: red;
+}
+
+.textArea {
+    display: flex;
+    justify-content: flex-start;
+}
+
+.column {
+    margin-left: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
 .dropdown-content a:link {
     border: none;
     text-decoration: none;
 }
+
 .dropdown-content a:hover {
-   color: #54CC0B;
+    color: #54CC0B;
 }
 
 /* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
