@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Api;
 
 use App\Models\ModelApi\RegisterConference;
-use App\http\Requests\CreateConferenceRequest;
+use App\Http\Requests\CreateConferenceRequest;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\ModelApi\ApiConfpatModel;
