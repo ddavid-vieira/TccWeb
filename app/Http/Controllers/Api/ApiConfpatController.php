@@ -121,6 +121,8 @@ class ApiConfpatController extends Controller
         } else {
             return ['message' => 'Login Failed'];
         }
+        if (count($dados) == 0) {
+            return ['message' => 'Login Failed'];        }
     }
     public function listConferencebySetor($id)
     {
