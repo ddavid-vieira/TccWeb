@@ -45,7 +45,7 @@ class ApiConfpatController extends Controller
     }
     public function store(CreateConferenceRequest $request, conferencia $conferencia)
     {
-       
+
         $CodSala = $this->objsala::where("nome", $request->SelectSala)->get("CodSala");
         $CodSetor = $this->objsetor::where("nome", $request->SelectSetor)->get("CodSetor");
         if ($CodSala != null && $CodSetor != null) {
@@ -112,6 +112,9 @@ class ApiConfpatController extends Controller
     public function auth(Request $request, servidor $servidor)
     {
         $dados = $servidor::whereRaw(' "Matricula" = ?', $request->matricula)->get();
+        if (count($dados) == 0) {
+            return ['message' => 'Login Failed'];
+        }
         if (Hash::check($request->senha, $dados[0]["Senha"]) && sizeof($dados) != 0) {
             return [
                 'authenticated' => true,
@@ -121,8 +124,6 @@ class ApiConfpatController extends Controller
         } else {
             return ['message' => 'Login Failed'];
         }
-        if (count($dados) == 0) {
-            return ['message' => 'Login Failed'];        }
     }
     public function listConferencebySetor($id)
     {
