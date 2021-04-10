@@ -201,7 +201,7 @@ class ControllerPatrimonio extends Controller
                             }
                         }
                     }
-                    return redirect()->route('Import');
+                    return redirect()->route('Import')->with('messageSucesso', 'Planilha importada com sucesso');
                 }
                 if ($request->Selects == 3) {
                     function unlinkRecursive($dir, $deleteRootToo)
