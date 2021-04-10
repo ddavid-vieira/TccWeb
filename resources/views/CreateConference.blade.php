@@ -6,7 +6,6 @@ Criação de Conferência
 @endsection
 @section('ImgMain')
 <img src="{{url('images/ImgCreateConference.svg')}}" widht="400" height="400" alt="ImgLogin">
-
 @endsection
 
 @section('content')
@@ -50,5 +49,14 @@ Criação de Conferência
     </div>
 
 </form>
+<script>
+    $(document).ready(function() {
+        setTimeout(function() {
+            $(".alert").fadeOut("slow", function() {
+                $(this).alert('close');
+            });
+        }, 4000);
+    });
+</script>
 
 @endsection

@@ -42,7 +42,10 @@ class ApiConfpatController extends Controller
             $dados = ApiConfpatModel::where("CodPatrimonio", $id)->get();
             return $dados;
         } catch (Exception $e) {
-            return ["retorno" => $e->getMessage()];
+            return [
+                "retorno" => $e->getMessage(),
+                "find" => false
+            ];
         }
     }
     public function store(CreateConferenceRequest $request, conferencia $conferencia)
@@ -198,9 +201,8 @@ class ApiConfpatController extends Controller
     }
     public function createReport(RegisterConference $registerConference, conferencia $conferencia)
     {
-    
+
         $dados = DB::table('conferencia')->join('registerconference', 'conferencia.Idconferencia', '=', 'registerconference.Idconferencia')->where('conferencia.Estado', '=', 'Finalizada')->get();
         return view('CreateReport', compact('dados'));
     }
-   
 }
