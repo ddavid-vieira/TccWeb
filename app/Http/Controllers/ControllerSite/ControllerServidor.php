@@ -54,7 +54,7 @@ class ControllerServidor extends Controller
     public function auth(UserRequest $request, servidor $servidor)
     {
 
-        $dados = $servidor::whereRaw('Matricula = ?', $request->matricula)->get();
+        $dados = $servidor::whereRaw('"Matricula" = ?', $request->matricula)->get();
         if (count($dados) == 0) {
             return redirect()->route('LoginUser')->with('message', 'Matrícula e/ou Senha Inválidas');
         }
