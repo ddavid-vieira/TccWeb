@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+
+
 <html lang="pt-br">
 
 <head>
@@ -6,6 +8,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{url('css/ViewIndex.css')}}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -17,14 +20,16 @@
     <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #6cf119; padding: 20px;   -webkit-box-shadow: 4px 4px 4px 0px rgba(54, 50, 50, 0.63);
     -moz-box-shadow: 4px 4px 4px 0px rgba(54, 50, 50, 0.63);
     box-shadow: 4px 4px 4px 0px rgba(54, 50, 50, 0.63);">
-        <a class="navbar-brand" style="color:antiquewhite;" href="#">Confpat</a>
+        <img src="{{url('images/LogoWeb.svg')}}" widht="60" height="60" alt="ImgLogin">
+        <a class="navbar-brand ml-1" style="color:antiquewhite;" href="#">CONFPAT</a>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-                <a class="nav-item nav-link" href="{{route('Import')}}">Importar dados <span class="sr-only"></span></a>
-                <a class="nav-item nav-link" href="{{route('CreateConference')}}">Criar conferência</a>
-                <a class="nav-item nav-link" href="{{route('ListConferences')}}">Listar Conferências</a>
-                <a class="nav-item nav-link" href="{{route('ImportUniqueQrCode')}}">Criar Qr code único</a>
-                <div class="rowuser" style="margin-left: 270px; margin-right: 20px; color:aliceblue;">
+                <a class="custom-link ml-3" style="text-decoration: none;" href="{{route('Import')}}">Importar dados</a>
+                <a class="custom-link ml-3" style="text-decoration: none;" href="{{route('CreateConference')}}">Criar conferência</a>
+                <a class="custom-link ml-3" style="text-decoration: none;" href="{{route('ListConferences')}}">Listar Conferências</a>
+                <a class="custom-link ml-3" style="text-decoration: none;" href="{{route('ImportUniqueQrCode')}}">Criar Qr code único</a>
+                <a class="custom-link ml-3" style="text-decoration: none;" href="{{route('CreateReport')}}">Criar Relatórios</a>
+                <div class="rowuser" style="margin-left: 170px; margin-right: 20px; color:aliceblue;">
                     <span class="material-icons">
                         person
                     </span>
@@ -42,7 +47,7 @@
                                                     function masc_tel($tel)
                                                     {
                                                         $tam = strlen(preg_replace("/[^0-9]/", "", $tel));
-                                                        if ($tam <= 9) { 
+                                                        if ($tam <= 9) {
                                                             return substr($tel, 0, $tam - 4) . "-" . substr($tel, -4);
                                                         }
                                                     }

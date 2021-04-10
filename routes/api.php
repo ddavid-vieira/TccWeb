@@ -21,6 +21,7 @@ Route::namespace('App\Http\Controllers\Api')->group(function () {
     Route::get('/allPatrimonios', 'ApiConfpatController@list');
     Route::get('selectPatrimonio/{id}', 'ApiConfpatController@select');
     Route::view('/create', 'CreateConference')->name('create');
+    Route::get('/CreateReport','ApiConfpatController@createReport')->name('CreateReport');
     Route::post('/store', 'ApiConfpatController@store')->name('ConferenceStore');
     Route::group(['middleware' => ['web']], function () {
         Route::any('/createConferences', 'ApiConfpatController@listdata')->name('CreateConference');
@@ -31,7 +32,7 @@ Route::namespace('App\Http\Controllers\Api')->group(function () {
     Route::any('/AuthUserApi', 'ApiConfpatController@auth');
     Route::get('/getConferences/{id}', 'ApiConfpatController@listConferencebySetor');
     Route::get('/allsetores', 'ApiConfpatController@allSetores');
-    Route::get('/getSalas','ApiConfpatController@getSalas')->name('GetSalas');
     Route::put('/alterEstado/{CodPatrimonio}','ApiConfpatController@updatePatrimonio');
     Route::post('/registerconference', 'ApiConfpatController@registerconference')->name('RegisterConference');
+    
 });

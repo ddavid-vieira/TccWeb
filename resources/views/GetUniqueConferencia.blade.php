@@ -31,14 +31,10 @@
                 <tr style="background-color:#6cf119; color:white;">
                     <th scope="col">Unidade Gestora</th>
                     <th scope="col">Unidade</th>
-                    <th scope="col">Data de Tombamento</th>
                     <th scope="col">Data de Garantia</th>
                     <th scope="col">Denominação </th>
                     <th scope="col">Marca</th>
                     <th scope="col">Estado</th>
-                    <th scope="col">Finalidade</th>
-                    <th scope="col">Depreciável</th>
-                    <th scope="col">Valor</th>
                 </tr>
             </thead>
             <tbody>
@@ -46,14 +42,11 @@
                 <tr>
                     <td>{{$patrimonio->get("Unidade Gestora")[0]["Unidade Gestora"]}}</td>
                     <td>{{$patrimonio->Unidade}}</td>
-                    <td>{{$patrimonio->DataTombamento}}</td>
                     <td>{{$patrimonio->DataGarantia}}</td>
                     <td>{{$patrimonio->Denominacao}}</td>
                     <td>{{$patrimonio->Marca}}</td>
                     <td>{{$patrimonio->Estado}}</td>
-                    <td>{{$patrimonio->Finalidade}}</td>
-                    <td>{{$patrimonio->Depreciavel}}</td>
-                    <td>{{$patrimonio->Valor}}</td>
+
                 </tr>
                 @endforeach
             </tbody>

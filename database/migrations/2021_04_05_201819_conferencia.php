@@ -13,7 +13,7 @@ class Conferencia extends Migration
      */
     public function up()
     {
-        //Schema::dropIfExists("conferencia");
+        // Schema::dropIfExists('conferencia');
         // Schema::create('conferencia', function (Blueprint $table) {
         //     $table->increments('Idconferencia');
         //     $table->integer('CodSala')->unsigned();
@@ -23,6 +23,7 @@ class Conferencia extends Migration
         //     $table->foreign('CodSetor')->references('CodSetor')->on('setor')->onDelete('cascade')->onUpdate('cascade');
         //     $table->string('NomeSetor');
         //     $table->datetime('Data');
+        //     $table->string('Estado')->nullable();;
         // });
     }
 

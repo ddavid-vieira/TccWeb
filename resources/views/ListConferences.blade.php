@@ -14,21 +14,23 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #6cf119; padding: 20px;   -webkit-box-shadow: 4px 4px 4px 0px rgba(54, 50, 50, 0.63);
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #6cf119; padding: 15px;   -webkit-box-shadow: 4px 4px 4px 0px rgba(54, 50, 50, 0.63);
     -moz-box-shadow: 4px 4px 4px 0px rgba(54, 50, 50, 0.63);
     box-shadow: 4px 4px 4px 0px rgba(54, 50, 50, 0.63);">
-        <a class="navbar-brand" style="color:antiquewhite;" href="#">Confpat</a>
+        <img src="{{url('images/LogoWeb.svg')}}" widht="60" height="60" alt="ImgLogin">
+        <a class="navbar-brand ml-1" style="color:antiquewhite;" href="#">CONFPAT</a>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav ">
-                <a class="nav-item nav-link mt-2" href="{{route('Import')}}">Importar dados <span class="sr-only"></span></a>
-                <a class="nav-item nav-link mt-2" href="{{route('CreateConference')}}">Criar conferência</a>
-                <a class="nav-item nav-link mt-2" href="{{route('ListConferences')}}">Listar Conferências</a>
-                <a class="nav-item nav-link mt-2" href="{{route('ImportUniqueQrCode')}}">Criar Qr code único</a>
-                <div class="rowuser" style="margin-left: 270px; margin-right: 20px; color:aliceblue;">
-                    <span class="material-icons">
+                <a class="custom-link ml-3" style="text-decoration: none;" href="{{route('Import')}}">Importar dados</a>
+                <a class="custom-link ml-3" style="text-decoration: none;" href="{{route('CreateConference')}}">Criar conferência</a>
+                <a class="custom-link ml-3" style="text-decoration: none;" href="{{route('ListConferences')}}">Listar Conferências</a>
+                <a class="custom-link ml-3" style="text-decoration: none;" href="{{route('ImportUniqueQrCode')}}">Criar Qr code único</a>
+                <a class="custom-link ml-3" style="text-decoration: none;" href="{{route('CreateReport')}}">Criar Relatórios</a>
+                <div class="rowuser" style="margin-left: 170px; margin-right: 20px; color:aliceblue;">
+                    <span class="material-icons" style="margin:0;">
                         person
                     </span>
-                    <a class="nav-item nav-link" href="#">
+                    <a class="nav-item nav-link" href="#" style="margin:0;">
                         <div class="dropdown">
                             <button onclick="myFunction()" class="dropbtn">Bem vindo,
                                 <?php
@@ -39,13 +41,14 @@
                                 <a href="#"> Matrícula: <?php
                                                         echo $_SESSION['Matricula'] ?></a>
                                 <a href="#">Telefone: <?php
-                                                        function telephone($number)
+                                                        function masc_tel($tel)
                                                         {
-                                                            $number = "(" . substr($number, 0, 2) . ") " . substr($number, 2, -4) . " - " . substr($number, -4);
-                                                            // primeiro substr pega apenas o DDD e coloca dentro do (), segundo subtr pega os números do 3º até faltar 4, insere o hifem, e o ultimo pega apenas o 4 ultimos digitos
-                                                            return $number;
+                                                            $tam = strlen(preg_replace("/[^0-9]/", "", $tel));
+                                                            if ($tam <= 9) {
+                                                                return substr($tel, 0, $tam - 4) . "-" . substr($tel, -4);
+                                                            }
                                                         }
-                                                        echo telephone($_SESSION['Telefone']) ?></a>
+                                                        echo masc_tel($_SESSION['Telefone']) ?></a>
                                 <a href="#">CPF: <?php
                                                     echo formatar_cpf_cnpj($_SESSION['Cpf']);
                                                     function formatar_cpf_cnpj($doc)

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\Api;
 
+use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Facades\DB;
 use App\Models\ModelApi\RegisterConference;
 use App\Http\Requests\CreateConferenceRequest;
 use App\Http\Controllers\Controller;
@@ -55,7 +57,8 @@ class ApiConfpatController extends Controller
                     'Sala' =>  $request->SelectSala,
                     'CodSetor' => $CodSetor[0]["CodSetor"],
                     'NomeSetor' => $request->SelectSetor,
-                    'Data' => $request->data
+                    'Data' => $request->data,
+                    'Estado' => 'Pronta'
 
                 ]
             )) {
@@ -72,8 +75,7 @@ class ApiConfpatController extends Controller
     public function listConference()
     {
         try {
-            $dados = conferencia::all();
-
+            $dados = conferencia::where('Estado', 'Pronta')->get();
             return ["status" => 200, "data" => $dados];
         } catch (Exception $e) {
             return ["retorno" => $e->getMessage()];
@@ -97,13 +99,24 @@ class ApiConfpatController extends Controller
     }
     public function CreateUserApi(Request $request)
     {
-
+        function desformatcpf($cpf)
+        {
+            $cpf1 = str_replace('.', '', $cpf);
+            $cpf2 = str_replace('-', '', $cpf1);
+            return $cpf2;
+        }
+        function desformatTelefone($telefone)
+        {
+            $telefone1 = str_replace(' ', '', $telefone);
+            $telefone2 = str_replace('-', '', $telefone1);
+            return  $telefone2;
+        }
         servidor::insert(
             [
                 'Matricula' => $request->matricula,
                 'Nome' => $request->nome,
-                'Telefone' => $request->telefone,
-                'Cpf' => $request->cpf,
+                'Telefone' => desformatTelefone($request->telefone),
+                'Cpf' =>  desformatcpf($request->cpf),
                 'Senha' => Hash::make($request->senha)
             ]
         );
@@ -158,6 +171,7 @@ class ApiConfpatController extends Controller
                 $data->Verificado = true;
             }
             $data->save();
+
             return [
                 "message" => "ok",
                 "Patrimonio" => $data
@@ -166,15 +180,15 @@ class ApiConfpatController extends Controller
             return ['error' => $e->getMessage()];
         }
     }
-    public function registerconference(Request $request, RegisterConference $registerConference)
+    public function registerconference(Request $request, RegisterConference $registerConference, conferencia $conferencia)
     {
+        $conferencia::where('Idconferencia', $request->Idconferencia)->update(['Estado' => 'Em andamento']);
         if ($registerConference::insert(
             [
                 'Idconferencia' => $request->Idconferencia,
                 'Matricula' => $request->Matricula,
                 'DataInit' =>  $request->DataInit,
                 'DataClose' => $request->DataClose,
-                'Estado' => $request->Estado,
             ]
         )) {
             return ['Insert' => true];
@@ -182,4 +196,11 @@ class ApiConfpatController extends Controller
             return ['Insert' => false];
         }
     }
+    public function createReport(RegisterConference $registerConference, conferencia $conferencia)
+    {
+    
+        $dados = DB::table('conferencia')->join('registerconference', 'conferencia.Idconferencia', '=', 'registerconference.Idconferencia')->where('conferencia.Estado', '=', 'Pronta')->get();
+        return view('CreateReport', compact('dados'));
+    }
+   
 }

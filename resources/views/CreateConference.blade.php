@@ -33,7 +33,7 @@ Criação de Conferência
     <select class="custom-select mt-3" name="SelectSala" id="SelectSala">
         <option value="">Selecione a Sala</option>
         @foreach($AllSalas as $sala)
-        <option name="sala" value="{{$sala->nome}}">{{$sala->nome}}</option>
+        <option name="setor" value="{{$sala->nome}}">{{$sala->nome}}</option>
         @endforeach
     </select>
     <div class="date">
@@ -42,7 +42,6 @@ Criação de Conferência
     </div>
     <div class="button">
         <button type="submit" class="btn btn-outline-info btn-lg btn-block">Criar</button>
-
     </div>
 
 </form>

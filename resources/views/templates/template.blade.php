@@ -18,7 +18,8 @@
 
 <body>
     <div class="header">
-        <a class="navbar-brand" style="color:antiquewhite;" href="#">Confpat</a>
+        <img src="{{url('images/LogoWeb.svg')}}" widht="60" height="60" alt="ImgLogin">
+        <a class="navbar-brand ml-1" style="color:antiquewhite;" href="#">CONFPAT</a>
 
     </div>
     <div class="container">
