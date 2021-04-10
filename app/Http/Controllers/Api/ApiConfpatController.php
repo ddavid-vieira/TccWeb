@@ -62,7 +62,7 @@ class ApiConfpatController extends Controller
 
                 ]
             )) {
-                return redirect()->route('CreateConference');
+                return redirect()->route('CreateConference')->with('messageSucesso', 'Conferência criada com sucesso');
             }
         }
     }

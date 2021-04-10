@@ -11,6 +11,11 @@ Criação de Conferência
 
 @section('content')
 <h1>Cadastro de Conferência</h1>
+@if(session('messageSucesso'))
+<div class="alert alert-success">
+    <p>{{session('messageSucesso')}}</p>
+</div>
+@endif
 @if ($errors->any())
 <div class="alert alert-danger">
     <ul>
