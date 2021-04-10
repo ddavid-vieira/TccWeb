@@ -199,7 +199,7 @@ class ApiConfpatController extends Controller
     public function createReport(RegisterConference $registerConference, conferencia $conferencia)
     {
     
-        $dados = DB::table('conferencia')->join('registerconference', 'conferencia.Idconferencia', '=', 'registerconference.Idconferencia')->where('conferencia.Estado', '=', 'Pronta')->get();
+        $dados = DB::table('conferencia')->join('registerconference', 'conferencia.Idconferencia', '=', 'registerconference.Idconferencia')->where('conferencia.Estado', '=', 'Finalizada')->get();
         return view('CreateReport', compact('dados'));
     }
    
