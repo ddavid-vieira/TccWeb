@@ -13,9 +13,9 @@ class Modifyregisterconferencia extends Migration
      */
     public function up()
     {
-        Schema::table('registerconference', function (Blueprint $table){
-            $table->dropColumn('Estado');
-        });
+        // Schema::table('registerconference', function (Blueprint $table){
+        //     $table->dropColumn('Estado');
+        // });
     }
 
     /**
