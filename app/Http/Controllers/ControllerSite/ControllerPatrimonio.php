@@ -153,7 +153,7 @@ class ControllerPatrimonio extends Controller
                             $sala = $dados[1];
                         }
                     }
-                    $setorExist = setor::select("nome")->where("nome", 'Informática')->exists();
+                    $setorExist = setor::select("nome")->where("nome", $setor)->exists();
                     if ($setorExist == true) {
                         $insertSetor = true;
                     } else {

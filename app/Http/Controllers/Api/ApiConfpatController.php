@@ -163,10 +163,9 @@ class ApiConfpatController extends Controller
     {
         try {
             $data = $patrimonio::find($CodPatrimonio);
-
             if ($request->Estado != $data->Estado) {
                 $data->Alterou = true;
-                $data->Estado = $request->Estado;
+                $data->NovoEstado = $request->Estado;
                 $data->Verificado = true;
             } else {
                 $data->Alterou = false;
