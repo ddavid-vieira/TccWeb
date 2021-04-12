@@ -78,7 +78,7 @@ class ApiConfpatController extends Controller
     public function listConference()
     {
         try {
-            $dados = conferencia::where('Estado', 'Pronta')->get();
+            $dados = conferencia::where('Estado', 'Pronta')->orWhere('Estado', 'Em andamento')->get();
             return ["status" => 200, "data" => $dados];
         } catch (Exception $e) {
             return ["retorno" => $e->getMessage()];
@@ -145,8 +145,7 @@ class ApiConfpatController extends Controller
     {
         try {
 
-            $dados = conferencia::where("CodSetor", $id)->get();
-
+            $dados = conferencia::where("CodSetor", $id)->where('Estado', 'Pronta')->orWhere('Estado', 'Em andamento')->get();
             return ["status" => 200, "data" => $dados];
         } catch (Exception $e) {
             return ["retorno" => $e->getMessage()];
