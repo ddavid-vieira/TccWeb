@@ -34,5 +34,6 @@ Route::namespace('App\Http\Controllers\Api')->group(function () {
     Route::get('/allsetores', 'ApiConfpatController@allSetores');
     Route::put('/alterEstado/{CodPatrimonio}','ApiConfpatController@updatePatrimonio');
     Route::post('/registerconference', 'ApiConfpatController@registerconference')->name('RegisterConference');
+    Route::post('/closeconference/{IdConferencia}','ApiConfpatController@closeconference')->name('closeconference');
     
 });

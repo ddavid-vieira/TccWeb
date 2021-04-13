@@ -197,6 +197,18 @@ class ApiConfpatController extends Controller
             return ['Insert' => false];
         }
     }
+    public function closeconference(Request $request, RegisterConference $registerConference, conferencia $conferencia, $Idconferencia)
+    {
+        try {
+            $data = $conferencia::find($Idconferencia);
+            $data->Estado = 'Finalizada';
+            $registerConference::where('Idconferencia', $Idconferencia)->update(['DataClose' => $request->DataClose]);
+            $data->save();
+            return ["message" => "ok"];
+        } catch (Exception $e) {
+            return ["retorno" => $e->getMessage()];
+        }
+    }
     public function createReport(RegisterConference $registerConference, conferencia $conferencia)
     {
 
