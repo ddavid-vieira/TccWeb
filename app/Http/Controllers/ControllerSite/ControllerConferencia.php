@@ -10,7 +10,6 @@ use App\Models\ModelSite\servidor;
 use App\Models\ModelSite\sala;
 use App\Models\ModelApi\RegisterConference;
 use Illuminate\Support\Facades\DB;
-
 use Barryvdh\DomPDF\Facade as PDF;
 
 class ControllerConferencia extends Controller

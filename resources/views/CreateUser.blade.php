@@ -11,10 +11,11 @@ CreateUser
 @section('content')
 <h1 class="h1form">Cadastre-se</h1>
 @if ($errors->any())
-<div class="alert alert-danger">
-    <ul>
+<div class="alert alert-danger" style='display:flex; justify-content: flex-start; margin:0;'>
+    <lottie-player src="https://assets1.lottiefiles.com/datafiles/q0z5reyGijuF4rk/data.json" mode="bounce" background="rgba(0, 0, 0, 0)" speed="0.85" style="width: 75px; height: 75;" loop autoplay></lottie-player>
+    <ul style='list-style:none; margin:0; margin-top:5px; padding:0;'>
         @foreach ($errors->all() as $error)
-        <li>{{ $error }}</li>
+        <li style='list-style:none; margin:0;'>{{ $error }}</li>
         @endforeach
     </ul>
 </div>
@@ -43,6 +44,13 @@ CreateUser
 </form>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.0/jquery.mask.js"></script>
 <script>
+    $(document).ready(function() {
+        setTimeout(function() {
+            $(".alert").fadeOut("slow", function() {
+                $(this).alert('close');
+            });
+        }, 4000);
+    });
     $(document).ready(function() {
         var $cpf = $("#cpf");
         $cpf.mask('000.000.000-00', {

@@ -46,7 +46,7 @@
 
         </div>
     </div>
-    <table class="table table-hover">
+    <table class="table table-hover" style ='margin: 10px;'>
         <thead>
             <tr style="background-color:#6cf119; color:white;">
                 <th scope="col">Unidade Gestora</th>

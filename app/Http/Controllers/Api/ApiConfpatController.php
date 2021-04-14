@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
+use Illuminate\Validation\ValidationException;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\DB;
 use App\Models\ModelApi\RegisterConference;
@@ -48,9 +49,11 @@ class ApiConfpatController extends Controller
             ];
         }
     }
-    public function store(CreateConferenceRequest $request, conferencia $conferencia)
+    public function store(Request $request, conferencia $conferencia)
     {
-
+        if (!isset($request->SelectSetor)) {
+            return redirect()->route('CreateConference')->with('message', 'Há campos vázios');
+        }
         $CodSala = $this->objsala::where("nome", $request->SelectSala)->get("CodSala");
         $CodSetor = $this->objsetor::where("nome", $request->SelectSetor)->get("CodSetor");
         if ($CodSala != null && $CodSetor != null) {

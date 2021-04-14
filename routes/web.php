@@ -20,7 +20,7 @@ Route::namespace('App\Http\Controllers\ControllerSite')->group(function () {
     Route::get('/patrimonio', 'ControllerPatrimonio@index');
     Route::any('/import', 'ControllerPatrimonio@route')->name('Import');
     Route::any('/storePatrimonio', 'ControllerPatrimonio@store')->name('store');
-    Route::post('/createUniqueQrcode', 'ControllerPatrimonio@createUniqPcueQrcode')->name('CreateUniqueQrCode');
+    Route::post('/createUniqueQrcode', 'ControllerPatrimonio@createUniqueQrcode')->name('CreateUniqueQrCode');
     Route::view('/CreateUser', 'CreateUser')->name('CreateUser');
     Route::post('/storeUser', 'ControllerServidor@store')->name('Create');
     Route::view('/', 'LoginUser')->name('LoginUser');

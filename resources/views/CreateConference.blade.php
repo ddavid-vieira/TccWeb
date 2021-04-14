@@ -15,13 +15,10 @@ Criação de Conferência
     <p>{{session('messageSucesso')}}</p>
 </div>
 @endif
-@if ($errors->any())
-<div class="alert alert-danger">
-    <ul>
-        @foreach ($errors->all() as $error)
-        <li>{{ $error }}</li>
-        @endforeach
-    </ul>
+@if(session('message'))
+<div class="alert alert-danger" style='display:flex; justify-content: flex-start;'>
+    <lottie-player src="https://assets1.lottiefiles.com/datafiles/q0z5reyGijuF4rk/data.json" mode="bounce" background="rgba(0, 0, 0, 0)" speed="0.85" style="width: 50px; height: 50px;" loop autoplay></lottie-player>
+    <p style="margin-top:15px;">{{session('message')}}</p>
 </div>
 @endif
 <form action="{{route('ConferenceStore')}}" method="post">

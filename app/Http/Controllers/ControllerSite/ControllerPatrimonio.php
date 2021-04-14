@@ -93,7 +93,7 @@ class ControllerPatrimonio extends Controller
                                         'Valor' => "$dados[19]",
                                         'Alterou' => 0,
                                         'Verificado' => 0,
-                                        'NovoEstado' =>''
+                                        'NovoEstado' => ''
 
 
                                     ]
@@ -193,7 +193,7 @@ class ControllerPatrimonio extends Controller
                                         'Valor' => "$dados[19]",
                                         'Alterou' => 0,
                                         'Verificado' => 0,
-                                        'NovoEstado' =>''
+                                        'NovoEstado' => ''
 
 
                                     ]
