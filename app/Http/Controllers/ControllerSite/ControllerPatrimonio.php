@@ -291,6 +291,7 @@ class ControllerPatrimonio extends Controller
     }
     public function createUniqueQrcode(UniqueQrCodeRequest $request)
     {
+       
         function unlinkRecursive($dir, $deleteRootToo)
         {
             if (!$dh = @opendir($dir)) {
@@ -311,7 +312,7 @@ class ControllerPatrimonio extends Controller
             }
             return;
         }
-        unlinkRecursive(public_path() . '/QrcodesUnicos', false);
+        unlinkRecursive(storage_path() . '/QrcodesUnicos', false);
         array_map('unlink', glob(public_path() . "/*.zip"));
         file_put_contents("QrcodesÚnicos.zip", '');
         $Qrcodes = array();
@@ -331,7 +332,7 @@ class ControllerPatrimonio extends Controller
                     ->labelFont(new NotoSans(20))
                     ->labelAlignment(new LabelAlignmentCenter())
                     ->build();
-                $result->saveToFile(public_path() . "\QrcodesUnicos\qrcode" . "$qrcode" . ".png");
+                $result->saveToFile(storage_path() . "\QrcodesUnicos\qrcode" . "$qrcode" . ".png");
             }
         }
         $zip = new ZipArchive;
@@ -339,7 +340,8 @@ class ControllerPatrimonio extends Controller
         $zipPath = public_path($fileName);
         if ($zip->open($zipPath, ZipArchive::OVERWRITE) === TRUE) {
             // arquivos que serao adicionados ao zip
-            $files = File::files(public_path('QrcodesUnicos'));
+
+            $files = File::files(storage_path('QrcodesUnicos'));
 
             foreach ($files as $key => $value) {
                 // nome/diretorio do arquivo dentro do zip
