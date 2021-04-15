@@ -337,7 +337,7 @@ class ControllerPatrimonio extends Controller
         $zip = new ZipArchive;
         $fileName = "QrcodesÚnicos.zip";
         $zipPath = public_path($fileName);
-        if ($zip->open($zipPath, ZipArchive::CREATE) === TRUE) {
+        if ($zip->open($zipPath, ZipArchive::OVERWRITE) === TRUE) {
             // arquivos que serao adicionados ao zip
             $files = File::files(public_path('QrcodesUnicos'));
 
