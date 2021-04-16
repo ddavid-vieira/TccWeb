@@ -13,10 +13,10 @@ class Modifyconferencia extends Migration
      */
     public function up()
     {
-        Schema::table('conferencia', function (Blueprint $table) {
-            $table->timestamp('Data');
+        // Schema::table('conferencia', function (Blueprint $table) {
+        //     $table->timestamp('Data');
 
-        });
+        // });
     }
 
     /**

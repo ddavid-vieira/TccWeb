@@ -119,7 +119,7 @@
                         </p>
                     </div>
                     <div class="view">
-                        Patrimônios: <a href="{{route('GetUniqueConference', $conferencia->Sala )}}" class="viewlink">Vizualizar</a>
+                        Patrimônios: <a href="{{route('GetUniqueConference', $conferencia->Sala )}}" class="viewlink">Visualizar</a>
                     </div>
 
                 </div>

@@ -130,7 +130,7 @@ class ApiConfpatController extends Controller
     }
     public function auth(Request $request, servidor $servidor)
     {
-        $dados = $servidor::whereRaw(' "Matricula" = ?', $request->matricula)->get();
+        $dados = $servidor::whereRaw('"Matricula" = ?', $request->matricula)->get();
         if (count($dados) == 0) {
             return ['message' => 'Login Failed'];
         }

@@ -37,8 +37,7 @@ class ControllerConferencia extends Controller
     }
     public function listconferences()
     {
-        $conferencias = $this->objconferencia->all();
-        $datas = $this->objconferencia->get("Data");
+        $conferencias = $this->objconferencia->where('Estado', 'Pronta')->orWhere('Estado', 'Em andamento')->get();
         return view('ListConferences', compact('conferencias'));
     }
     public function getUniqueConferencia($sala)
