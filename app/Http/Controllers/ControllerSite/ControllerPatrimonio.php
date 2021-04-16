@@ -4,6 +4,7 @@ namespace App\Http\Controllers\ControllerSite;
 
 //require __DIR__ . "/vendor/autoload.php";
 use App\Http\Requests\UniqueQrCodeRequest;
+use ZanySoft\Zip\Zip;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ImportRequest;
 use Illuminate\Http\Request;
@@ -341,7 +342,7 @@ class ControllerPatrimonio extends Controller
         if ($zip->open($zipPath, ZipArchive::OVERWRITE) === TRUE) {
             // arquivos que serao adicionados ao zip
 
-            $files = File::files("../".storage_path('QrcodesUnicos'));
+            $files = File::files(storage_path('QrcodesUnicos'));
 
             foreach ($files as $key => $value) {
                 // nome/diretorio do arquivo dentro do zip

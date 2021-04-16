@@ -102,7 +102,7 @@
             <div class="card">
                 <div class="rowsetor">
                     <div class="setor">
-                        <p>Setor {{ $conferencia->NomeSetor}}</p>
+                        <p>Setor {{$conferencia->NomeSetor}}</p>
                     </div>
                     <div class="data">
                         <p> <?php
