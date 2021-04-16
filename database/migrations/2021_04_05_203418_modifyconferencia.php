@@ -14,7 +14,7 @@ class Modifyconferencia extends Migration
     public function up()
     {
         Schema::table('conferencia', function (Blueprint $table) {
-            $table->dropColumn('Data');
+            $table->timestamp('Data');
 
         });
     }
