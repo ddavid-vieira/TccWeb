@@ -2,16 +2,14 @@
 
 namespace App\Http\Controllers\ControllerSite;
 
-use Validator;
-use resources\views\vendor\flash;
-use App\Http\Requests\UserRequest;
-use App\Http\Requests\CreateUserRequest;
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Http\Requests\CreateUserRequest;
+use App\Http\Requests\UserRequest;
 use App\Models\ModelSite\servidor;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use resources\views\vendor\flash;
 use Session;
+use Validator;
 
 class ControllerServidor extends Controller
 {
@@ -54,7 +52,7 @@ class ControllerServidor extends Controller
     public function auth(UserRequest $request, servidor $servidor)
     {
 
-        $dados = $servidor::whereRaw('"Matricula" = ?', $request->matricula)->get();
+        $dados = $servidor::where('Matricula', $request->matricula)->get();
         if (count($dados) == 0) {
             return redirect()->route('LoginUser')->with('message', 'Matrícula e/ou Senha Inválidas');
         }

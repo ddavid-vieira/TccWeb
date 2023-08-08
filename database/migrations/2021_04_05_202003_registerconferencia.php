@@ -13,16 +13,15 @@ class Registerconferencia extends Migration
      */
     public function up()
     {
-       // Schema::dropIfExists('registerconference');
-        // Schema::create('registerconference', function (Blueprint $table) {
-        //     $table->increments('IdRegisterConference');
-        //     $table->integer('Idconferencia')->unsigned();
-        //     $table->foreign('Idconferencia')->references('Idconferencia')->on('conferencia')->onDelete('cascade')->onUpdate('cascade');
-        //     $table->integer('Matricula')->unsigned();
-        //     $table->foreign('Matricula')->references('Matricula')->on('servidor')->onDelete('cascade')->onUpdate('cascade');
-        //     $table->datetime('DataInit');
-        //     $table->datetime('DataClose')->nullable();
-        // });
+        Schema::create('registerconference', function (Blueprint $table) {
+            $table->increments('IdRegisterConference');
+            $table->integer('Idconferencia')->unsigned();
+            $table->foreign('Idconferencia')->references('Idconferencia')->on('conferencia')->onDelete('cascade')->onUpdate('cascade');
+            $table->integer('Matricula')->unsigned();
+            $table->foreign('Matricula')->references('Matricula')->on('servidor')->onDelete('cascade')->onUpdate('cascade');
+            $table->datetime('DataInit');
+            $table->datetime('DataClose')->nullable();
+        });
     }
 
     /**
@@ -32,6 +31,7 @@ class Registerconferencia extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('registerconference');
+
     }
 }

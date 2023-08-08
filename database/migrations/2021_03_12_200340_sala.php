@@ -13,13 +13,12 @@ class Sala extends Migration
      */
     public function up()
     {
-        // //Schema::dropIfExists("sala");
-        // Schema::create("sala", function (Blueprint $table) {
-        //     $table->increments('CodSala');
-        //     $table->integer("CodSetor")->unsigned();
-        //     $table->foreign("CodSetor")->references("CodSetor")->on("setor")->onDelete('cascade')->onUpdate('cascade');
-        //     $table->string('nome');
-        // });
+        Schema::create("sala", function (Blueprint $table) {
+            $table->increments('CodSala');
+            $table->integer("CodSetor")->unsigned();
+            $table->foreign("CodSetor")->references("CodSetor")->on("setor")->onDelete('cascade')->onUpdate('cascade');
+            $table->string('nome');
+        });
     }
 
     /**
@@ -29,6 +28,6 @@ class Sala extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists("sala");
     }
 }
